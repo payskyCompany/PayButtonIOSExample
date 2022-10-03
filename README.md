@@ -1,150 +1,101 @@
-## PaySky Button SDK
+<p align="center"><a href="https://paysky.io/" target="_blank"><img width="440" src="https://paysky.io/wp-content/uploads/2021/05/PaySky-logo.svg"></a></p>
 
-The purpose of this SDK to help programmers to use PaySky payment SDK for IOS .
+# PaySky PayButton SDK Usage Example
+The PayButton helps make the integration of card acceptance into your app easy.
 
-## Getting Started
+You simply provide the merchant information you receieve from PaySky to the payment SDK. The PayButton displays a ready-made view that guides the merchant through the payment process and shows a Summary screen at the end of the transaction.
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+### Getting Started
 
 ### Prerequisites
+This project uses cocoapods for dependencies management. If you don't have cocoapods installed in your machine, or are using older version of cocoapods, you can install it in terminal by running command ```sudo gem install cocoapods```. For more information go to https://cocoapods.org/
 
-What things you need to install the software and how to install them
-
+1. Download CocoaPods on your machine if you don't already have it
 ```
-1-COCOPODS installed on your machine   .
-2-Xcode
-3-Create new IOS project in xcode to use SDK or if you have created a project before with swit
+sudo gem install cocoapods
 ```
 
-### Installing
-
-A step by step that tell you how to get our SDK in your project.
-
+2. Create a Podfile to your project.
 ```
-1- open your xcode project.
-2- in your project in Podfile in project level  add :-
+pod init
+```
+
+3. Install third-party libraries using `pod`
+```
+pod install
+```
+
+## 💻 Installation
+
+1. Add the pod to your Podfile:
+```
 pod 'PayButton'
-3- open your terminal in project path and write this command:-
-(for first try)
-- pod deintegrate
-- pod update
-(for second try)
-- pod install
-
-
-### Using SDK
-
 ```
-in order to use our SDK you should get merchant id and Terminal id from our company.
 
-1-import PayButton
-2 – create a new instance from PayButton:-  
+2. Open the terminal and run
+```
+pod deintegrate
+pod clean
+pod install
+```
 
- let paymentViewController = PaymentViewController ()
+## 🚀 Deployment
+1. Before deploying your project live, you should get a merchant ID and terminal ID from our company.
+2. You should keep your merchant ID and terminal ID secured in your project, encrypt them before save them in project.
 
-you need to just pass some parameters to PayButton class instance :-
-  1-Merchat id.
-  2-Terminal id.
-  3-Payment amount.
-  4-Currency code [Optional].
-  5-merchant secure hash.
-  6-transaction Reference Number.
-  
-Note That:-
-you shoud keep your secure hash and merchant id and terminal id with encryption before save them in storage if you want.
+## 🛠 How to use
+In order to use the SDK you should get a Merchant ID, a Terminal ID and Secure Hash from PaySky company.
 
-Example:-
+### 👉 Import
+In the class you want to intiate the payment from, you should import the framework
+```swift
+import PayButton
+```
 
+After the import, create a new instance from PayButton
+```swift
+let paymentViewController = PaymentViewController()
+```
 
-        paymentViewController.amount =  "amount"  // Amount
-        paymentViewController.delegate = self // PaymentDelegate
-        paymentViewController.mId = "merchantId" // Merchant id
-        paymentViewController.tId = "terminalId" // Terminal  id
-        paymentViewController.Currency = "currencyCode" // Currency Code [Optional]
-        paymentViewController.refnumber = "reference number""  // unique transaction reference number.
-        paymentViewController.Key = "Merchant secure hash" // merchant secrue hash
-        paymentViewController.pushViewController()
+and intialize the following data in the PayButton instance:-
+1) Merchat id
+2) Terminal id
+3) Secure hash
+4) Transaction reference number
+5) Payment amount
+6) Currency code [Optional]
 
-       
-2 - in order to create transaction call back in deleget PaymentDelegate:-
+```swift
+paymentViewController.delegate = self                 // Payment Delegate
+paymentViewController.mId = "merchantId"              // Merchant id
+paymentViewController.tId = "terminalId"              // Terminal id
+paymentViewController.Key = "Merchant secure hash"    // Merchant secrue hash
+paymentViewController.refnumber = "reference number"  // Generate unique 16-digits number
+paymentViewController.amount =  "amount"              // Amount
+paymentViewController.Currency = "currencyCode"       // Currency Code [Optional]
+paymentViewController.pushViewController()
+```
 
-    implete deleget on your ViewController
-    class ViewController: UIViewController, PaymentDelegate  {\
-        var receipt: TransactionStatusResponse = TransactionStatusResponse()
+In order to create transaction callback in delegate PaymentDelegate, implement delegate on your ViewController.
 
+```swift 
+    class ViewController: UIViewController, PaymentDelegate  {
         func finishSdkPayment(_ receipt: TransactionStatusResponse) {
-        self.receipt = receipt
-        if receipt.Success {
-
-            LabeResoinse.setTitle("Transaction completed successfully, click here to show callback result", for: .normal)
-            
-        }else {
-            LabeResoinse.setTitle("Transaction has been failed click to callback callback ", for: .normal)
-
-
-            
+           if receipt.Success {                  // if transaction success is true
+               print("Transaction completed successfully")
+               print(receipt.NetworkReference)           // reference number of transaction.
+           } else {
+               print("Transaction failed")
+               print(receipt.Message)           // response error
+           }
         }
     }
-
-
-    }
-
-
-to create transaction in our sdk you just call createTransaction method and pass to it
-PaymentTransactionCallback listener to call it after transaction.
-this listener has 2 methods:-
-
-  1 - finishSdkPayment method
-      this method called in case transaction success by card payment with SuccessfulCardTransaction object.
-      SuccessfulCardTransaction object from create transaction listener contains:-
-      NetworkReference variable that is reference number of transaction.
-      AuthCode variable
-      ActionCode variable.
-      ReceiptNumber variable.
-      amount variable.
-      
-  2 - finishSdkPayment method 
-      this method is called if customer make a wallet transaction with SuccessfulWalletTransaction object.
-      SuccessfulWalletTransaction object from create transaction listener contains:-
-      NetworkReference variable that is reference number of transaction.
-      amount variable.
-      
-
-
-  
-Example:- 
-
-           func finishSdkPayment(_ receipt: TransactionStatusResponse) {
-         if receipt.Success   // will be true if transaction success 
-         {
-          print(receipt.NetworkReference)
-         }else{
-          print(receipt.Message) // resonse of error
-
-         }
-    }
-
 ```
 
-
-## Deployment
-
-1-Before deploy your project live ,you should get a merchant id and terminal id from our company .
-2-you should keep your merchant id and terminal id secured
-in your project, encrypt them before save them in project.
-
-## Built With
-
+## 🛠️ Built With
 * [Alamofire](https://github.com/Alamofire/Alamofire)  
 * [EVReflection](https://github.com/evermeer/EVReflection)  
 
 
-## Authors
-
+## ✍️ Authors
 **PaySky Company** - (https://www.paysky.io)
-
-## Sample Project
-**https://github.com/payskyCompany/PayButtonIOSExample.git**
-
-
-
