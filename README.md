@@ -92,6 +92,8 @@ In order to create transaction callback in delegate PaymentDelegate, implement d
     }
 ```
 
+📱 **Make sure to run on a physical device.**
+
 ## 🛠️ Built With
 * [Alamofire](https://github.com/Alamofire/Alamofire)  
 * [EVReflection](https://github.com/evermeer/EVReflection)  
