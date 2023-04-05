@@ -63,7 +63,7 @@ and intialize the following data in the PayButton instance:-
 3) Secure hash
 4) Transaction reference number
 5) Payment amount
-6) Currency code [Optional]
+6) Currency code
 
 ```swift
 paymentViewController.delegate = self                 // Payment Delegate
@@ -72,7 +72,7 @@ paymentViewController.tId = "terminalId"              // Terminal id
 paymentViewController.Key = "Merchant secure hash"    // Merchant secrue hash
 paymentViewController.refnumber = "reference number"  // Generate unique 16-digits number
 paymentViewController.amount =  "amount"              // Amount
-paymentViewController.Currency = "currencyCode"       // Currency Code [Optional]
+paymentViewController.Currency = "currencyCode"       // Currency Code
 paymentViewController.pushViewController()
 ```
 
