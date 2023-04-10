@@ -27,7 +27,7 @@ pod install
 
 ## 💻 Installation
 
-1. Add the pod to your Podfile:
+1. Add [PayButton](https://cocoapods.org/pods/PayButton) pod to your Podfile:
 ```
 pod 'PayButton'
 ```
