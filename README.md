@@ -1,6 +1,6 @@
 <p align="center"><a href="https://paysky.io/" target="_blank"><img width="440" src="https://paysky.io/wp-content/uploads/2023/12/Paysky-logo.png"></a></p>
 
-# PaySky PayButton SDK
+# PaySky PayButton SDK Example
 The PayButton helps make the integration of card acceptance into your app easy.
 
 You simply provide the merchant information you receieve from PaySky to the payment SDK. The PayButton displays a ready-made view that guides the merchant through the payment process and shows a summary screen at the end of the transaction.
