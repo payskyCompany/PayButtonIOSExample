@@ -120,7 +120,6 @@ extension ViewController: PayButtonDelegate {
 * [PopupDialog](https://github.com/orderella/PopupDialog)
 * [PayCardsRecognizer](https://github.com/faceterteam/PayCards_iOS/blob/master/PayCardsRecognizer.podspec)
 * [MOLH](https://github.com/MoathOthman/MOLH)
-* [DLRadioButton](https://github.com/DavydLiu/DLRadioButton)
 
 ## ✍️ Authors
 **PaySky Company**
