@@ -1,13 +1,11 @@
 PODS:
   - Alamofire (5.0.5)
+  - DLRadioButton (1.4.12)
   - DynamicBlurView (4.1.0)
-  - EVReflection (5.10.1):
-    - EVReflection/Core (= 5.10.1)
-  - EVReflection/Core (5.10.1)
   - MOLH (1.4.3)
-  - PayButton (0.6.5):
+  - PayButtonIOS (1.2.0):
     - Alamofire (~> 5.0.5)
-    - EVReflection (~> 5.10.1)
+    - DLRadioButton (~> 1.4.12)
     - MOLH (~> 1.4.3)
     - PayCardsRecognizer (~> 1.1.7)
     - PopupDialog (~> 1.1.1)
@@ -16,27 +14,36 @@ PODS:
     - DynamicBlurView (~> 4.0)
 
 DEPENDENCIES:
-  - PayButton
+  - PayButtonIOS (from `https://github.com/payskyCompany/PayButtonIOS.git`, branch `master`)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - DLRadioButton
     - DynamicBlurView
-    - EVReflection
     - MOLH
-    - PayButton
     - PayCardsRecognizer
     - PopupDialog
 
+EXTERNAL SOURCES:
+  PayButtonIOS:
+    :branch: master
+    :git: https://github.com/payskyCompany/PayButtonIOS.git
+
+CHECKOUT OPTIONS:
+  PayButtonIOS:
+    :commit: 68f5785d4f47123f1ceb55c6eff36026912ef0d1
+    :git: https://github.com/payskyCompany/PayButtonIOS.git
+
 SPEC CHECKSUMS:
   Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
+  DLRadioButton: d7c4e225ed0e8013cef7be61455230c7557ad7c1
   DynamicBlurView: 58e18fae80bb614e34681a4486870e7d257b62e8
-  EVReflection: 8124de482178d34ccd56473e16cd95990f9a1113
   MOLH: e45827d200aeb1310641090fd8cd03ad2b42ae72
-  PayButton: 14138b02e7c72fd765005fb3fa963f495919d562
+  PayButtonIOS: cb9274219da1138ad709e1f8aa24cbd3e60f9852
   PayCardsRecognizer: 2e4d1b2fdd5f1528fb56064a91e1d58a1af7a2db
   PopupDialog: 720c92befd8bc23c13442254945213db5612f149
 
-PODFILE CHECKSUM: 042313fb9a5218a1476388c33b064010feb3855c
+PODFILE CHECKSUM: 5bac6dd7b2773cbab3848b3cfc82c53bfe0896ee
 
-COCOAPODS: 1.12.0
+COCOAPODS: 1.15.2
